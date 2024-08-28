@@ -1,5 +1,5 @@
 public with sharing class OpportunityForecast {
-  List<QuarterForecast> quarters;
+  public List<QuarterForecast> quarters;
 
   public OpportunityForecast() {
     this.quarters = new List<QuarterForecast>();
@@ -13,9 +13,9 @@ public with sharing class OpportunityForecast {
   }
 
   public class QuarterForecast {
-    Integer quarter;
-    Decimal revenue;
-    Integer count;
+    public Integer quarter;
+    public Decimal revenue;
+    public Integer count;
 
     public QuarterForecast(Integer quarter) {
       this.quarter = quarter;
@@ -24,7 +24,7 @@ public with sharing class OpportunityForecast {
     }
 
     public void add(Opportunity opp) {
-      this.revenue += opp.Amount;
+      if (opp.Amount != null) this.revenue += opp.Amount;
       this.count++;
     }
   }
