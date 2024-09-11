@@ -43,4 +43,19 @@ public with sharing class AccountTriggerHelper {
         update updateOpps;
     }
 
+    public static void updateAccountsWithAggregateQuery(List<Id> accountIds) {
+
+        AggregateResult[] totals = [select AccountId, SUM(Amount) total
+            from Opportunity where AccountId in :accountIds and Amount != null 
+            GROUP BY AccountId];
+
+        // Get Total Amount
+        List<Account> updateAccounts = new List<Account>();
+        for (AggregateResult total : totals) {
+            updateAccounts.add(new Account(Id = (Id)total.get('AccountId'), 
+                Total_Opportunity_Amount__c = (Decimal)total.get('total')));
+        }
+        update updateAccounts;
+    }
+
 }
