@@ -38,8 +38,7 @@ trigger ExampleTriggerWeek7 on Account (before insert, before update, after inse
     }
 
     // Get Accounts with their contacts that meet our criteria
-    List<Account> accountRecords = new List<Account>([select Id, (select Id from Contacts
-      where Email = 'test@test.com' AND FirstName = 'Test') from Account where Id in :accountIds]);
+    List<Account> accountRecords = AccountUtils.getAccountWithTestContacts(accountIds).values();
 
     List<Contact> newContacts = new List<Contact>();
     for (Account accountRecord : accountRecords) {

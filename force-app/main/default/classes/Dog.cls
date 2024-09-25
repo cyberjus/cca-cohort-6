@@ -1,4 +1,4 @@
-public with sharing class Dog {
+public virtual with sharing class Dog {
   public String name;
   public Integer weight;
   public String color;
@@ -6,6 +6,7 @@ public with sharing class Dog {
 
   public Dog(String name) {
     this.name = name;
+    this.weight = 10;
   }
 
   public void bark() {
@@ -16,7 +17,7 @@ public with sharing class Dog {
     }
   }
 
-  public void eat() {
+  public virtual void eat() {
     this.weight += 2;
   }
 
