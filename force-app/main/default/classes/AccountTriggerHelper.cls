@@ -5,7 +5,7 @@ public with sharing class AccountTriggerHelper {
         List<Opportunity> opps = [select Id, Amount 
             from Opportunity where AccountId = :accountId];
 
-        // Get Total Amount
+        // Get Total Amount of the Opportunities
         Decimal totalAmount = 0;
         for (Opportunity opp : opps) {
             if (opp.Amount != null) totalAmount += opp.Amount;
