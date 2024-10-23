@@ -1,0 +1,21 @@
+<template>
+  <lightning-card title="Say Hello">
+    <div class="slds-p-around_medium">
+      <template if:true={name}>
+        <h1>Hello {name}!</h1>
+      </template>
+      <template if:false={name}>
+        <lightning-input type="text" label="Enter Your Name"></lightning-input>
+
+        <div class="slds-m-top_medium">
+          <lightning-button
+            variant="brand"
+            label="Say Hello"
+            title="Say Hello"
+            onclick={handleClick}
+          ></lightning-button>
+        </div>
+      </template>
+    </div>
+  </lightning-card>
+</template>

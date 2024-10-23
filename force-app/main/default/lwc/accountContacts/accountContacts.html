@@ -1,0 +1,16 @@
+<template>
+  <lightning-card title={accountName}>
+    <div class="slds-p-around_medium">
+
+      <div>Selected Customers: {countOfSelected}</div>
+
+      <template for:each={contacts.data} for:item="c">
+
+        <c-account-contact-row key={c.Id} contact={c} ontoggle={handleCustomerToggle}></c-account-contact-row>
+
+
+      </template>
+
+    </div>
+  </lightning-card>
+</template>
